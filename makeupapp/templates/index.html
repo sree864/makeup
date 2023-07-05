@@ -82,8 +82,12 @@
                   </div>
                   <h4>$78</h4>
                 </div>
-                <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
-              </div>
+                <form action="{% url 'add_to_cart' %}" method="post">
+                  {% csrf_token %}
+                  <input type="hidden" name="product_name" value="mac lipstick">
+                  <input type="hidden" name="price" value="78">
+                  <button type="submit" class="fal fa-shopping-cart cart"></button>
+              </form>              </div>
               <div class="pro">
                 <img src="{% static 'images/products/l2.avif' %}" alt="">
                 <div class="des">

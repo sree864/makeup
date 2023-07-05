@@ -43,27 +43,15 @@
                 </tr>
             </thead>
             <tbody>
+                {% for item in cart_items %}
                 <tr>
                     <td><a href="#"><i class="far fa-times-circle"></i></a></td>
-                    <td>Mac Lipstick shade Red Gloss</td>
-                    <td>$11.8</td>
-                    <td><input type="number" value="1"></td>
-                    <td>$11.8</td>
+                    <td>{{ item.product_name }}</td>
+                    <td>${{ item.price }}</td>
+                    <td><input type="number" value="{{ item.quantity }}"></td>
+                    <td>${{ item.subtotal }}</td>
                 </tr>
-                <tr>
-                    <td><a href="#"><i class="far fa-times-circle"></i></a></td>
-                    <td>Mac Lipstick shade Red Gloss</td>
-                    <td>$11.8</td>
-                    <td><input type="number" value="1"></td>
-                    <td>$11.8</td>
-                </tr>
-                <tr>
-                    <td><a href="#"><i class="far fa-times-circle"></i></a></td>
-                    <td>Mac Lipstick shade Red Gloss</td>
-                    <td>$11.8</td>
-                    <td><input type="number" value="1"></td>
-                    <td>$11.8</td>
-                </tr>
+                {% endfor %}
             </tbody>
         </table>
     </section>

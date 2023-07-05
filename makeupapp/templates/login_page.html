@@ -75,7 +75,10 @@
         <button type="submit">Login</button>
       </div>
     </form>
-    <a href="signup_page.html" class="signup-link">Don't have an account? Sign up</a>
+    {% if error_message %}
+<p>{{ error_message }}</p>
+{% endif %}
+    <a href="{% url 'signup_page' %}" class="signup-link">Don't have an account? Sign up</a>
   </div>
 </body>
 </html>
