@@ -68,28 +68,8 @@
         <div class="pro-container">
           <section id="product1" class="section-p1">
             <div class="pro-container">
-              <div class="pro" onclick="window.location.href='sproduct.html';">
-                <img src="{% static 'images/products/l1.png' %}" alt="">
-                <div class="des">
-                  <span>mac lipstick</span>
-                  <h5>Matte Lipstick | MAC</h5>
-                  <div class="star">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                  </div>
-                  <h4>$78</h4>
-                </div>
-                <form action="{% url 'add_to_cart' %}" method="post">
-                  {% csrf_token %}
-                  <input type="hidden" name="product_name" value="mac lipstick">
-                  <input type="hidden" name="price" value="78">
-                  <button type="submit" class="fal fa-shopping-cart cart"></button>
-              </form>              </div>
               <div class="pro">
-                <img src="{% static 'images/products/l2.avif' %}" alt="">
+                <img src="{% static 'images/products/l1.png' %}" alt="" data-image="{% static 'images/products/l1.png' %}">
                 <div class="des">
                   <span>mac lipstick</span>
                   <h5>Love Me Lipstick</h5>
@@ -102,10 +82,26 @@
                   </div>
                   <h4>$78</h4>
                 </div>
-                <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
-              </div>
+                <a href="#" onclick="addToCartWithPopup('mac lipstick', 78, this.parentNode.querySelector('img').dataset.image)"  style="background-color: #810808;""><i class="fal fa-shopping-cart cart"></i></a>
+              </div>      
               <div class="pro">
-                <img src="{% static 'images/products/l5.avif' %}" alt="">
+                <img src="{% static 'images/products/l2.avif' %}" alt="" data-image="{% static 'images/products/l2.avif' %}">
+                <div class="des">
+                  <span>mac lipstick</span>
+                  <h5>Love Me Lipstick</h5>
+                  <div class="star">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                  </div>
+                  <h4>$78</h4>
+                </div>
+                <a href="#" onclick="addToCartWithPopup('mac lipstick', 78, this.parentNode.querySelector('img').dataset.image)"><i class="fal fa-shopping-cart cart"></i></a>
+              </div>                                                  
+              <div class="pro">
+                <img src="{% static 'images/products/l5.avif' %}" alt="" data-image="{% static 'images/products/l5.avif' %}">
                 <div class="des">
                   <span>mac lipstick</span>
                   <h5>Cartoon Astronaut T-shirts</h5>
@@ -118,13 +114,13 @@
                   </div>
                   <h4>$78</h4>
                 </div>
-                <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
-              </div>
+                <a href="#" onclick="addToCartWithPopup('mac lipstick', 78, this.parentNode.querySelector('img').dataset.image)"><i class="fal fa-shopping-cart cart"></i></a>
+              </div>              
               <div class="pro">
-                <img src="{% static 'images/products/l7.jpeg' %}" alt="">
+                <img src="{% static 'images/products/l7.jpeg' %}" alt="" data-image="{% static 'images/products/l7.jpeg' %}">
                 <div class="des">
                   <span>mac lipstick</span>
-                  <h5>Lipstick M.A.C Retro Matte </h5>
+                  <h5>Lipstick M.A.C Retro Matte</h5>
                   <div class="star">
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
@@ -134,10 +130,11 @@
                   </div>
                   <h4>$78</h4>
                 </div>
-                <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
+                <a href="#" onclick="addToCartWithPopup('mac lipstick', 78, this.parentNode.querySelector('img').dataset.image)"><i class="fal fa-shopping-cart cart"></i></a>
               </div>
+              
               <div class="pro">
-                <img src="{% static 'images/products/l8.jpeg' %}" alt="">
+                <img src="{% static 'images/products/l8.jpeg' %}" alt="" data-image="{% static 'images/products/l8.jpeg' %}">
                 <div class="des">
                   <span>mac lipstick</span>
                   <h5>MAC Lipstick - Mehr (Matte) 3g</h5>
@@ -150,57 +147,60 @@
                   </div>
                   <h4>$78</h4>
                 </div>
-                <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
+                <a href="#" onclick="addToCartWithPopup('mac lipstick', 78, this.parentNode.querySelector('img').dataset.image)"><i class="fal fa-shopping-cart cart"></i></a>
               </div>
-            <div class="pro">
-              <img src="{% static 'images/products/l1.png' %}" alt="">
-              <div class="des">
-                <span>mac lipstick</span>
-                <h5>Matte Lipstick | MAC</h5>
-                <div class="star">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
+              
+              <div class="pro">
+                <img src="{% static 'images/products/l1.png' %}" alt="" data-image="{% static 'images/products/l1.png' %}">
+                <div class="des">
+                  <span>mac lipstick</span>
+                  <h5>Matte Lipstick | MAC</h5>
+                  <div class="star">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                  </div>
+                  <h4>$78</h4>
                 </div>
-                <h4>$78</h4>
+                <a href="#" onclick="addToCartWithPopup('mac lipstick', 78, this.parentNode.querySelector('img').dataset.image)"><i class="fal fa-shopping-cart cart"></i></a>
               </div>
-              <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
-            </div>
-            <div class="pro">
-              <img src="{% static 'images/products/l2.avif' %}" alt="">
-              <div class="des">
-                <span>mac lipstick</span>
-                <h5>Love Me Lipstick</h5>
-                <div class="star">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
+              
+              <div class="pro">
+                <img src="{% static 'images/products/l2.avif' %}" alt="" data-image="{% static 'images/products/l2.avif' %}">
+                <div class="des">
+                  <span>mac lipstick</span>
+                  <h5>Love Me Lipstick</h5>
+                  <div class="star">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                  </div>
+                  <h4>$78</h4>
                 </div>
-                <h4>$78</h4>
+                <a href="#" onclick="addToCartWithPopup('mac lipstick', 78, this.parentNode.querySelector('img').dataset.image)"><i class="fal fa-shopping-cart cart"></i></a>
               </div>
-              <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
-            </div>
-            <div class="pro">
-              <img src="{% static 'images/products/l3.jpeg' %}" alt="">
-              <div class="des">
-                <span>mac lipstick</span>
-                <h5>Cartoon Astronaut T-shirts</h5>
-                <div class="star">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
+              
+              <div class="pro">
+                <img src="{% static 'images/products/l3.jpeg' %}" alt="" data-image="{% static 'images/products/l3.jpeg' %}">
+                <div class="des">
+                  <span>mac lipstick</span>
+                  <h5>Cartoon Astronaut T-shirts</h5>
+                  <div class="star">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                  </div>
+                  <h4>$78</h4>
                 </div>
-                <h4>$78</h4>
+                <a href="#" onclick="addToCartWithPopup('mac lipstick', 78, this.parentNode.querySelector('img').dataset.image)"><i class="fal fa-shopping-cart cart"></i></a>
               </div>
-              <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
-            </div>
-      </div>
+              </div>              
     </section>
   </section>
     <section id="sm-banner" class="section-p1">
@@ -289,6 +289,33 @@
        <p>© 2022 Sree</p> 
     </div>
     </footer>
-    <script src="script.js"></script>
+    <script>
+      function addToCart(productName, price, imageSrc) {
+        // Get the existing cart items from local storage or initialize an empty array
+        let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    
+        // Create a new item object
+        let newItem = {
+          productName: productName,
+          price: price,
+          imageSrc: imageSrc
+        };
+    
+        // Add the new item to the cart items array
+        cartItems.push(newItem);
+    
+        // Store the updated cart items in local storage
+        localStorage.setItem('cartItems', JSON.stringify(cartItems));
+      }
+      // Function to add an item to the cart and display a popup message
+function addToCartWithPopup(productName, price, imageSrc) {
+  addToCart(productName, price, imageSrc); // Call the original addToCart() function
+
+  // Display the popup message
+  alert('Item added to the cart');
+}
+
+    </script>
+            
 </body>
 </html>

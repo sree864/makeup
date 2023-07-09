@@ -33,29 +33,20 @@
     </section>
     <section id="cart" class="section-p1">
         <table width="100%">
-            <thead>
-                <tr>
-                    <td>Remove</td>
-                    <td>Product</td>
-                    <td>Price</td>
-                    <td>Quantity</td>
-                    <td>Subtotal</td>
-                </tr>
-            </thead>
-            <tbody>
-                {% for item in cart_items %}
-                <tr>
-                    <td><a href="#"><i class="far fa-times-circle"></i></a></td>
-                    <td>{{ item.product_name }}</td>
-                    <td>${{ item.price }}</td>
-                    <td><input type="number" value="{{ item.quantity }}"></td>
-                    <td>${{ item.subtotal }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
+          <thead>
+            <tr>
+              <td>Remove</td>
+              <td>Image</td>
+              <td>Product</td>
+              <td>Price</td>
+              <td>Quantity</td>
+              <td>Subtotal</td>
+            </tr>
+          </thead>
+          <tbody id="cartItemsBody"></tbody>
         </table>
-    </section>
-    <section id="cart-add" class="section-p1">
+      </section>
+      <section id="cart-add" class="section-p1">
         <div id="coupon">
             <h3>Apply Coupon</h3>
             <div class="coupon-input">
@@ -66,21 +57,21 @@
         <div id="subtotal">
             <h3>Cart Totals</h3>
             <table>
-                <tr>
-                    <td>Cart Subtotal</td>
-                    <td>$335</td>
-                </tr>
-                <tr>
-                    <td>Shipping</td>
-                    <td>Free</td>
-                </tr>
-                <tr>
-                    <td><strong>Total</strong></td>
-                    <td>$335</td>
-                </tr>
+              <tr>
+                <td>Cart Subtotal</td>
+                <td id="cartSubtotal">$335</td>
+              </tr>
+              <tr>
+                <td>Shipping</td>
+                <td>Free</td>
+              </tr>
+              <tr>
+                <td><strong>Total</strong></td>
+                <td id="cartTotal">$0.00</td>
+              </tr>
             </table>
             <button class="normal">Proceed to checkout</button>
-        </div>
+          </div>          
     </section>
     <footer class="section-p1">
         <div class="col">
@@ -130,6 +121,82 @@
        <p>© 2022 Sree</p> 
     </div>
     </footer>
-    <script src="script.js"></script>
+    <script src="{% static 'script.js' %}"></script>
+    <script>
+        // Retrieve the cart items from local storage
+        function getCartItems() {
+          return JSON.parse(localStorage.getItem('cartItems')) || [];
+        }
+      
+        // Generate table rows for each cart item
+        function generateCartRows() {
+          let cartItems = getCartItems();
+          let cartItemsBody = document.getElementById('cartItemsBody');
+          cartItemsBody.innerHTML = ''; // Clear existing rows
+      
+          let subtotal = 0; // Initialize the subtotal
+      
+          cartItems.forEach((item, index) => {
+            let row = document.createElement('tr');
+            let itemSubtotal = item.price * (item.quantity || 1); // Calculate the subtotal for the item
+            subtotal += itemSubtotal; // Add the item subtotal to the overall subtotal
+      
+            row.innerHTML = `
+              <td><button onclick="removeFromCart(${index})">Remove</button></td>
+              <td><img src="${item.imageSrc}" alt=""></td>
+              <td>${item.productName}</td>
+              <td>${item.price}</td>
+              <td><input type="number" value="${item.quantity || 1}" onchange="updateQuantity(${index}, this.value)" min="1"></td>
+              <td>${itemSubtotal}</td>
+            `;
+            cartItemsBody.appendChild(row);
+          });
+      
+          // Update the cart subtotal and total in the "Cart Totals" section
+          updateCartTotals(subtotal);
+        }
+      
+        // Function to update the cart totals in the "Cart Totals" section
+        function updateCartTotals(subtotal) {
+          let cartSubtotalElement = document.getElementById('cartSubtotal');
+          let cartTotalElement = document.getElementById('cartTotal');
+      
+          cartSubtotalElement.textContent = `$${subtotal.toFixed(2)}`;
+          cartTotalElement.textContent = `$${subtotal.toFixed(2)}`;
+        }
+      
+        // Function to remove an item from the cart
+        function removeFromCart(index) {
+          let cartItems = getCartItems();
+      
+          // Remove the item from the cartItems array
+          cartItems.splice(index, 1);
+      
+          // Update the cart items in local storage
+          localStorage.setItem('cartItems', JSON.stringify(cartItems));
+      
+          // Re-generate the cart rows
+          generateCartRows();
+        }
+      
+        // Function to update the quantity and subtotal
+        function updateQuantity(index, quantity) {
+          let cartItems = getCartItems();
+      
+          // Update the quantity
+          cartItems[index].quantity = quantity === "" ? 1 : parseInt(quantity);
+      
+          // Update the cart items in local storage
+          localStorage.setItem('cartItems', JSON.stringify(cartItems));
+      
+          // Re-generate the cart rows
+          generateCartRows();
+        }
+      
+        // Generate the initial cart rows when the page loads
+        generateCartRows();
+      </script>
+      
+         
 </body>
-</html>
+</html>      

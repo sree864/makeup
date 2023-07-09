@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 import mysql.connector
+from django.shortcuts import render, redirect
+from django.http import HttpResponseNotAllowed
 
 #signup page variables
 fn=''
@@ -50,7 +52,27 @@ def loginaction(request):
             return render(request,'index.html')
     return render(request,'login_page.html')  
 
+def add_to_cart(request):
+    if request.method == 'POST':
+        product_name = request.POST.get('product_name')
+        price = request.POST.get('price')
+        
+        # Implement your logic to add the product to the cart
+        # Store the product information in the cart database or session
+        
+        return redirect('cart')  # Redirect to the cart page after adding the product
 
+    return HttpResponseNotAllowed(['POST'])
+
+def cart(request):
+    # Retrieve cart items from the database or session
+    cart_items = [
+        {'product_name': 'Mac Lipstick shade Red Gloss', 'price': 11.8, 'quantity': 1, 'subtotal': 11.8},
+        # Add more cart items here
+    ]
+    
+    context = {'cart_items': cart_items}
+    return render(request, 'cart.html', context)
 
 
 def ok(request):
