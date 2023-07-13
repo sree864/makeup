@@ -14,12 +14,11 @@
         <!a href="#"><!img src="/Users/sreerajendran/Desktop/shopping /images/logo/Screenshot 2023-05-31 at 9.56.03 PM.png" class="logo" alt=""></a>
         <div>
             <ul id="navbar">
-                <li><a href="index.html">Home</a></li>
-                <li><a class="active" href="shop.html">Shop</a></li>
-                <li><a href="blog.html">Blog</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="cart.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
+                <li><a class="active" href="{% url 'index'%}">Home</a></li>
+                <li><a href="{% url 'shop'%}">Shop</a></li>
+                <li><a href="{% url 'about'%}">About</a></li>
+                <li><a href="{% url 'contact'%}">Contact</a></li>
+                <li><a href="{% url 'cart'%}"><i class="fa-solid fa-cart-shopping"></i></a></li>
             </ul>
         </div>
         <div id="mobile">
@@ -29,13 +28,13 @@
     </section>
     <section id="prodetails" class="section-p1">
         <div class="single-pro-image">
-            <img src="images/products/l1.png" width="100%" id="mainimg" alt="">
+            <img src="{% static 'images/products/l1.png' %}" width="100%" id="mainimg" alt="">
             <div class="small-img-group">
                 <div class="small-img-col">
-                    <img src="{% static 'images/features/f6.png' %}" width="100%" id="smallimg" alt="">
+                    <img src="{% static 'images/products/l3.jpeg' %}" width="100%" id="smallimg" alt="">
                 </div>
                 <div class="small-img-col">
-                    <img src="{% static 'images/features/f5.png' %}" width="100%" id="smallimg" alt="">
+                    <img src="{% static 'images/products/l6.avif' %}" width="100%" id="smallimg" alt="">
                 </div>
                 <div class="small-img-col">
                     <img src="{% static 'images/products/l1.png' %}" width="100%" id="smallimg" alt="">
@@ -47,16 +46,16 @@
         </div>
         <div class="single-pro-details">
             <h6>Home / Lipsticks</h6>
-            <h4> Men's Fashion T Shirt</h4>
-            <h2>$139.00</h2>
+            <h4>{{ lipstick_name }}</h4>
+            <h2>Rs. {{ lipstick_price }}</h2>
             <input type="number" value="1">
-            <button class="normal">Add to Cart</button>
+            <button class="normal" onclick="addToCartWithPopup('{{ lipstick_name }}', {{ lipstick_price }}, '{{ image }}')">
+                <i class="fal fa-shopping-cart cart"></i>
+            </button>
             <h4>Product details</h4>
-            <span>MAC Ruby Woo. This intense super matte red is a 
-                true red with a hint of blue which means it
-                looks bright and bold and looks good on all skin 
-                tones and, as a plus,it makes your teeth look white!</span>
+            <span>MAC Ruby Woo. This intense super matte red is a true red with a hint of blue which means it looks bright and bold and looks good on all skin tones and, as a plus, it makes your teeth look white!</span>
         </div>
+        
     </section>
     <section id="product1" class="section-p1">
         <h2>Featured Products</h2>
@@ -203,8 +202,43 @@
         smallimg[3].onclick = function() {
             mainimg.src = smallimg[3].children[0].src;
         }
-    </script>
     
-    <script src="script.js"></script>
-</body>
-</html>
+        function addToCart(productName, price, imageSrc) {
+            // Get the existing cart items from local storage or initialize an empty array
+            let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    
+            // Create a new item object
+            let newItem = {
+                productName: productName,
+                price: price,
+                imageSrc: imageSrc
+            };
+    
+            // Add the new item to the cart items array
+            cartItems.push(newItem);
+    
+            // Store the updated cart items in local storage
+            localStorage.setItem('cartItems', JSON.stringify(cartItems));
+        }
+    
+        // Function to add an item to the cart and display a popup message
+        function addToCartWithPopup(productName, price, imageSrc) {
+            addToCart(productName, price, imageSrc); // Call the original addToCart() function
+    
+            // Display the popup message
+            alert('Item added to the cart');
+        }
+        window.addEventListener("DOMContentLoaded", function() {
+    // Retrieve the image query parameter from the URL
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const imageSrc = urlParams.get("image");
+
+    // Set the image source for the main image
+    const mainimg = document.getElementById("mainimg");
+    mainimg.src = decodeURIComponent(imageSrc);
+  });
+    </script>
+    </body>
+    </html>
+    

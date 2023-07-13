@@ -6,21 +6,20 @@
     <title>shop</title>
     {% load static %}
     <link rel="stylesheet" href="path/to/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link rel="stylesheet" href="{% static 'style.css'%}">
 </head>
 <body>
     <section id="header">
-        <a href="#"><img src="path/to/logo.png" class="logo" alt=""></a>
         <div>
-            <ul id="navbar">
-                <li><a href="index.html">Home</a></li>
-                <li><a class="active" href="shop.html">Shop</a></li>
-                <li><a href="blog.html">Blog</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="cart.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
-            </ul>
-        </div>
+          <ul id="navbar">
+              <li><a href="{% url 'index'%}">Home</a></li>
+              <li><a class="active" href="{% url 'shop'%}">Shop</a></li>
+              <li><a href="{% url 'about'%}">About</a></li>
+              <li><a href="{% url 'contact'%}">Contact</a></li>
+              <li><a href="{% url 'cart'%}"><i class="fa-solid fa-cart-shopping"></i></a></li>
+          </ul>
+      </div>
         <div id="mobile">
             <a href="cart.html"><i class="fa-solid fa-cart-shopping"></i></a>
             <a><i id="bar" class="fas fa-outdent"></i></a>
@@ -32,24 +31,8 @@
     </section>
     <section id="product1" class="section-p1">
         <div class="pro-container">
-          <div class="pro" onclick="window.location.href='sproduct.html';">
-            <img src="{% static 'images/products/l1.png' %}" alt="">
-            <div class="des">
-              <span>mac lipstick</span>
-              <h5>Matte Lipstick | MAC</h5>
-              <div class="star">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-              </div>
-              <h4>$78</h4>
-            </div>
-            <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
-          </div>
           <div class="pro">
-            <img src="{% static 'images/products/l2.avif' %}" alt="">
+            <img src="{% static 'images/products/l1.png' %}" alt="" data-image="{% static 'images/products/l1.png' %}">
             <div class="des">
               <span>mac lipstick</span>
               <h5>Love Me Lipstick</h5>
@@ -62,10 +45,26 @@
               </div>
               <h4>$78</h4>
             </div>
-            <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
-          </div>
+            <a href="#" onclick="addToCartWithPopup('mac lipstick', 78, this.parentNode.querySelector('img').dataset.image)"  style="background-color: #810808;""><i class="fal fa-shopping-cart cart"></i></a>
+          </div>      
           <div class="pro">
-            <img src="images/products/l3.jpeg" alt="">
+            <img src="{% static 'images/products/l2.avif' %}" alt="" data-image="{% static 'images/products/l2.avif' %}">
+            <div class="des">
+              <span>mac lipstick</span>
+              <h5>Love Me Lipstick</h5>
+              <div class="star">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+              <h4>$78</h4>
+            </div>
+            <a href="#" onclick="addToCartWithPopup('mac lipstick', 78, this.parentNode.querySelector('img').dataset.image)"><i class="fal fa-shopping-cart cart"></i></a>
+          </div>                                                  
+          <div class="pro">
+            <img src="{% static 'images/products/l5.avif' %}" alt="" data-image="{% static 'images/products/l5.avif' %}">
             <div class="des">
               <span>mac lipstick</span>
               <h5>Cartoon Astronaut T-shirts</h5>
@@ -78,11 +77,78 @@
               </div>
               <h4>$78</h4>
             </div>
-            <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
-          </div>
+            <a href="#" onclick="addToCartWithPopup('mac lipstick', 78, this.parentNode.querySelector('img').dataset.image)"><i class="fal fa-shopping-cart cart"></i></a>
+          </div>              
           <div class="pro">
-            <img src="{% static 'iimages/products/l4.avif' %}" alt="">
-
+            <img src="{% static 'images/products/l7.jpeg' %}" alt="" data-image="{% static 'images/products/l7.jpeg' %}">
+            <div class="des">
+              <span>mac lipstick</span>
+              <h5>Lipstick M.A.C Retro Matte</h5>
+              <div class="star">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+              <h4>$78</h4>
+            </div>
+            <a href="#" onclick="addToCartWithPopup('mac lipstick', 78, this.parentNode.querySelector('img').dataset.image)"><i class="fal fa-shopping-cart cart"></i></a>
+          </div>
+          
+          <div class="pro">
+            <img src="{% static 'images/products/l8.jpeg' %}" alt="" data-image="{% static 'images/products/l8.jpeg' %}">
+            <div class="des">
+              <span>mac lipstick</span>
+              <h5>MAC Lipstick - Mehr (Matte) 3g</h5>
+              <div class="star">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+              <h4>$78</h4>
+            </div>
+            <a href="#" onclick="addToCartWithPopup('mac lipstick', 78, this.parentNode.querySelector('img').dataset.image)"><i class="fal fa-shopping-cart cart"></i></a>
+          </div>
+          
+          <div class="pro">
+            <img src="{% static 'images/products/l1.png' %}" alt="" data-image="{% static 'images/products/l1.png' %}">
+            <div class="des">
+              <span>mac lipstick</span>
+              <h5>Matte Lipstick | MAC</h5>
+              <div class="star">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+              <h4>$78</h4>
+            </div>
+            <a href="#" onclick="addToCartWithPopup('mac lipstick', 78, this.parentNode.querySelector('img').dataset.image)"><i class="fal fa-shopping-cart cart"></i></a>
+          </div>
+          
+          <div class="pro">
+            <img src="{% static 'images/products/l2.avif' %}" alt="" data-image="{% static 'images/products/l2.avif' %}">
+            <div class="des">
+              <span>mac lipstick</span>
+              <h5>Love Me Lipstick</h5>
+              <div class="star">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+              <h4>$78</h4>
+            </div>
+            <a href="#" onclick="addToCartWithPopup('mac lipstick', 78, this.parentNode.querySelector('img').dataset.image)"><i class="fal fa-shopping-cart cart"></i></a>
+          </div>
+          
+          <div class="pro">
+            <img src="{% static 'images/products/l3.jpeg' %}" alt="" data-image="{% static 'images/products/l3.jpeg' %}">
             <div class="des">
               <span>mac lipstick</span>
               <h5>Cartoon Astronaut T-shirts</h5>
@@ -95,26 +161,11 @@
               </div>
               <h4>$78</h4>
             </div>
-            <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
+            <a href="#" onclick="addToCartWithPopup('mac lipstick', 78, this.parentNode.querySelector('img').dataset.image)"><i class="fal fa-shopping-cart cart"></i></a>
           </div>
+          
           <div class="pro">
-            <img src="{% static 'images/products/l5.avif' %}" alt="">
-            <div class="des">
-              <span>mac lipstick</span>
-              <h5>Cartoon Astronaut T-shirts</h5>
-              <div class="star">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-              </div>
-              <h4>$78</h4>
-            </div>
-            <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
-          </div>
-          <div class="pro">
-            <img src="{% static 'mages/products/l6.avif' %}" alt="">
+            <img src="{% static 'images/products/l6.avif' %}" alt="">
             <div class="des">
               <span>mac lipstick</span>
               <h5>MAC Love Me Lipstick 3g - You're so Vain</h5>
@@ -129,6 +180,7 @@
             </div>
             <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
           </div>
+          
           <div class="pro">
             <img src="{% static 'images/products/l7.jpeg' %}" alt="">
             <div class="des">
@@ -144,152 +196,7 @@
               <h4>$78</h4>
             </div>
             <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
-          </div>
-          <div class="pro">
-            <img src="{% static 'images/products/l8.jpeg' %}" alt="">
-            <div class="des">
-              <span>mac lipstick</span>
-              <h5>MAC Lipstick - Mehr (Matte) 3g</h5>
-              <div class="star">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-              </div>
-              <h4>$78</h4>
-            </div>
-            <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
-          </div>
-        <div class="pro">
-          <img src="{% static 'images/products/l1.png' %}" alt="">
-          <div class="des">
-            <span>mac lipstick</span>
-            <h5>Matte Lipstick | MAC</h5>
-            <div class="star">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </div>
-            <h4>$78</h4>
-          </div>
-          <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
-        </div>
-        <div class="pro">
-          <img src="{% static 'images/products/l2.avif' %}" alt="">
-          <div class="des">
-            <span>mac lipstick</span>
-            <h5>Love Me Lipstick</h5>
-            <div class="star">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </div>
-            <h4>$78</h4>
-          </div>
-          <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
-        </div>
-        <div class="pro">
-          <img src="{% static 'images/products/l3.jpeg' %}" alt="">
-          <div class="des">
-            <span>mac lipstick</span>
-            <h5>Cartoon Astronaut T-shirts</h5>
-            <div class="star">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </div>
-            <h4>$78</h4>
-          </div>
-          <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
-        </div>
-        <div class="pro">
-          <img src="{% static 'images/products/l4.avif' %}" alt="">
-          <div class="des">
-            <span>mac lipstick</span>
-            <h5>Cartoon Astronaut T-shirts</h5>
-            <div class="star">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </div>
-            <h4>$78</h4>
-          </div>
-          <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
-        </div>
-        <div class="pro">
-          <img src="{% static 'images/products/l5.avif' %}" alt="">
-          <div class="des">
-            <span>mac lipstick</span>
-            <h5>Cartoon Astronaut T-shirts</h5>
-            <div class="star">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </div>
-            <h4>$78</h4>
-          </div>
-          <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
-        </div>
-        <div class="pro">
-          <img src="{% static 'images/products/l6.avif' %}" alt="">
-          <div class="des">
-            <span>mac lipstick</span>
-            <h5>MAC Love Me Lipstick 3g - You're so Vain</h5>
-            <div class="star">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </div>
-            <h4>$78</h4>
-          </div>
-          <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
-        </div>
-        <div class="pro">
-          <img src="{% static 'images/products/l7.jpeg' %}" alt="">
-          <div class="des">
-            <span>mac lipstick</span>
-            <h5>Lipstick M.A.C Retro Matte </h5>
-            <div class="star">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </div>
-            <h4>$78</h4>
-          </div>
-          <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
-        </div>
-        <div class="pro">
-          <img src="{% static 'images/products/l8.jpeg' %}" alt="">
-          <div class="des">
-            <span>mac lipstick</span>
-            <h5>MAC Lipstick - Mehr (Matte) 3g</h5>
-            <div class="star">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </div>
-            <h4>$78</h4>
-          </div>
-          <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
-        </div>
-      </div>
+          </div>          
     </section>
     <section id="pagination" class="section-p1">
         <a href="#">1</a>

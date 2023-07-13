@@ -14,12 +14,11 @@
         <!a href="#"><!img src="/Users/sreerajendran/Desktop/shopping /images/logo/Screenshot 2023-05-31 at 9.56.03 PM.png" class="logo" alt=""></a>
         <div>
             <ul id="navbar">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="shop.html">Shop</a></li>
-                <li><a href="blog.html">Blog</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a class="active" href="cart.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
+                <li><a href="{% url 'index'%}">Home</a></li>
+                <li><a href="{% url 'shop'%}">Shop</a></li>
+                <li><a href="{% url 'about'%}">About</a></li>
+                <li><a href="{% url 'contact'%}">Contact</a></li>
+                <li><a class="active" href="{% url 'cart'%}"><i class="fa-solid fa-cart-shopping"></i></a></li>
             </ul>
         </div>
         <div id="mobile">
@@ -59,7 +58,7 @@
             <table>
               <tr>
                 <td>Cart Subtotal</td>
-                <td id="cartSubtotal">$335</td>
+                <td id="cartSubtotal">Rs.335</td>
               </tr>
               <tr>
                 <td>Shipping</td>
@@ -67,7 +66,7 @@
               </tr>
               <tr>
                 <td><strong>Total</strong></td>
-                <td id="cartTotal">$0.00</td>
+                <td id="cartTotal">Rs.0.00</td>
               </tr>
             </table>
             <button class="normal">Proceed to checkout</button>
@@ -158,12 +157,13 @@
       
         // Function to update the cart totals in the "Cart Totals" section
         function updateCartTotals(subtotal) {
-          let cartSubtotalElement = document.getElementById('cartSubtotal');
-          let cartTotalElement = document.getElementById('cartTotal');
-      
-          cartSubtotalElement.textContent = `$${subtotal.toFixed(2)}`;
-          cartTotalElement.textContent = `$${subtotal.toFixed(2)}`;
-        }
+  let cartSubtotalElement = document.getElementById('cartSubtotal');
+  let cartTotalElement = document.getElementById('cartTotal');
+
+  cartSubtotalElement.textContent = `Rs.${subtotal.toFixed(2)}`;
+  cartTotalElement.textContent = `Rs.${subtotal.toFixed(2)}`;
+}
+
       
         // Function to remove an item from the cart
         function removeFromCart(index) {

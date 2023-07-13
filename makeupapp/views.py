@@ -79,11 +79,48 @@ def ok(request):
     return render(request,'shop.html')
 def ok1(request):
     return render(request,'index.html')    
-def ok2(request):
-    return render(request,'sproduct.html')  
+def ok2(request, product_id):
+    # Retrieve the product information based on the product_id from your database
+    # You can use the product_id to query the database and get the corresponding name and price
+
+    lipstick_name = "Lipstick Name"  # Replace with the retrieved product name
+    lipstick_price = 800  # Replace with the retrieved product price
+
+    context = {
+        'lipstick_name': lipstick_name,
+        'lipstick_price': lipstick_price,
+    }
+
+    return render(request, 'sproduct.html', context)
+
 def ok3(request):
     return render(request,'cart.html')  
 def ok4(request):
     return render(request,'login_page.html') 
 def ok5(request):
     return render(request,'signup_page.html') 
+def ok6(request):
+    return render(request,'about.html') 
+def ok7(request):
+    return render(request,'contact.html') 
+def ok8(request):
+    return render(request,'sproduct.html') 
+
+
+
+
+def sproduct(request):
+    image = request.GET.get('image')
+    product_encoded = request.GET.get('product')
+
+    # Decode the product JSON object
+    import json
+    product = json.loads(product_encoded)
+
+    product_name = product.get('name')
+    product_price = product.get('price')
+
+    # You can use the retrieved product name and price in your view logic
+
+    # For demonstration purposes, let's return a response with the retrieved data
+    return HttpResponse(f"Image: {image}<br>Product Name: {product_name}<br>Product Price: {product_price}")

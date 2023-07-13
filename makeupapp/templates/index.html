@@ -13,15 +13,14 @@
     <section id="header">
       <!a href="#"><!img src="{% static 'images/logo/Screenshot 2023-05-31 at 9.56.03 PM.png' %}" class="logo" alt=""></a>
       <div>
-            <ul id="navbar">
-                <li><a class="active" href="index.html">Home</a></li>
-                <li><a href="shop.html">Shop</a></li>
-                <li><a href="blog.html">Blog</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="cart.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
-            </ul>
-        </div>
+        <ul id="navbar">
+            <li><a class="active" href="{% url 'index'%}">Home</a></li>
+            <li><a href="{% url 'shop'%}">Shop</a></li>
+            <li><a href="{% url 'about'%}">About</a></li>
+            <li><a href="{% url 'contact'%}">Contact</a></li>
+            <li><a href="{% url 'cart'%}"><i class="fa-solid fa-cart-shopping"></i></a></li>
+        </ul>
+    </div>
         <div id="mobile">
             <a href="cart.html"><i class="fa-solid fa-cart-shopping"></i></a><
             <a<i id="bar" class="fas fa-outdent"></i>
@@ -32,8 +31,8 @@
         <h2>Super value deals</h2>
         <h1>On all products</h1>
         <p>Save more with coupons & upto 70% off!!!!</p>
-        <button>Shop Now</button>
-    </section>
+        <button onclick="window.location.href='{% url 'shop' %}'">Shop Now</button>
+      </section>
     <section id="feature">
         <div id="feature" class="section-p1">
             <div class="fe-box">
@@ -69,10 +68,10 @@
           <section id="product1" class="section-p1">
             <div class="pro-container">
               <div class="pro">
-                <img src="{% static 'images/products/l1.png' %}" alt="" data-image="{% static 'images/products/l1.png' %}">
-                <div class="des">
-                  <span>mac lipstick</span>
-                  <h5>Love Me Lipstick</h5>
+                <img src="{% static 'images/products/l1.png' %}" alt="" onclick="redirectToProduct('{% static 'images/products/l1.png' %}')">
+                  <div class="des">
+                  <span>MAC</span>
+                  <h5>Mini Matte Lipstick 1.8g - Mehr</h5>
                   <div class="star">
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
@@ -80,64 +79,16 @@
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
                   </div>
-                  <h4>$78</h4>
+                  <h4>Rs. 800</h4>
                 </div>
-                <a href="#" onclick="addToCartWithPopup('mac lipstick', 78, this.parentNode.querySelector('img').dataset.image)"  style="background-color: #810808;""><i class="fal fa-shopping-cart cart"></i></a>
-              </div>      
-              <div class="pro">
-                <img src="{% static 'images/products/l2.avif' %}" alt="" data-image="{% static 'images/products/l2.avif' %}">
-                <div class="des">
-                  <span>mac lipstick</span>
-                  <h5>Love Me Lipstick</h5>
-                  <div class="star">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                  </div>
-                  <h4>$78</h4>
-                </div>
-                <a href="#" onclick="addToCartWithPopup('mac lipstick', 78, this.parentNode.querySelector('img').dataset.image)"><i class="fal fa-shopping-cart cart"></i></a>
-              </div>                                                  
-              <div class="pro">
-                <img src="{% static 'images/products/l5.avif' %}" alt="" data-image="{% static 'images/products/l5.avif' %}">
-                <div class="des">
-                  <span>mac lipstick</span>
-                  <h5>Cartoon Astronaut T-shirts</h5>
-                  <div class="star">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                  </div>
-                  <h4>$78</h4>
-                </div>
-                <a href="#" onclick="addToCartWithPopup('mac lipstick', 78, this.parentNode.querySelector('img').dataset.image)"><i class="fal fa-shopping-cart cart"></i></a>
-              </div>              
-              <div class="pro">
-                <img src="{% static 'images/products/l7.jpeg' %}" alt="" data-image="{% static 'images/products/l7.jpeg' %}">
-                <div class="des">
-                  <span>mac lipstick</span>
-                  <h5>Lipstick M.A.C Retro Matte</h5>
-                  <div class="star">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                  </div>
-                  <h4>$78</h4>
-                </div>
-                <a href="#" onclick="addToCartWithPopup('mac lipstick', 78, this.parentNode.querySelector('img').dataset.image)"><i class="fal fa-shopping-cart cart"></i></a>
+                <a href="#" onclick="addToCartWithPopup('MAC Mehr', 800, this.parentNode.querySelector('img').dataset.image)"><i class="fal fa-shopping-cart cart"></i></a>
               </div>
               
               <div class="pro">
-                <img src="{% static 'images/products/l8.jpeg' %}" alt="" data-image="{% static 'images/products/l8.jpeg' %}">
+                <img src="{% static 'images/products/l2.avif' %}" alt="" onclick="redirectToProduct('{% static 'images/products/l2.avif' %}', 'Lakme Deep Wine', 345)">
                 <div class="des">
-                  <span>mac lipstick</span>
-                  <h5>MAC Lipstick - Mehr (Matte) 3g</h5>
+                  <span>Lakme</span>
+                  <h5>9to5 Primer Matte Lipstick - Deep Wine</h5>
                   <div class="star">
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
@@ -145,16 +96,17 @@
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
                   </div>
-                  <h4>$78</h4>
+                  <h4>Rs. 345</h4>
                 </div>
-                <a href="#" onclick="addToCartWithPopup('mac lipstick', 78, this.parentNode.querySelector('img').dataset.image)"><i class="fal fa-shopping-cart cart"></i></a>
+                <a href="#" onclick="addToCartWithPopup('Lakme Deep Wine', 345, this.parentNode.querySelector('img').dataset.image)"><i class="fal fa-shopping-cart cart"></i></a>
               </div>
               
               <div class="pro">
-                <img src="{% static 'images/products/l1.png' %}" alt="" data-image="{% static 'images/products/l1.png' %}">
+                <img src="{% static 'images/products/l3.jpeg' %}" alt="" onclick="redirectToProduct('{% static 'images/products/l3.jpeg' %}', 'NYX Barbie The Movie Matte Lip Cream', 699)">
                 <div class="des">
-                  <span>mac lipstick</span>
-                  <h5>Matte Lipstick | MAC</h5>
+                  <span>NYX PROFESSIONAL MAKEUP
+                  </span>
+                  <h5>Barbie The Movie Matte Lip Cream</h5>
                   <div class="star">
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
@@ -162,16 +114,33 @@
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
                   </div>
-                  <h4>$78</h4>
+                  <h4>Rs. 699</h4>
                 </div>
-                <a href="#" onclick="addToCartWithPopup('mac lipstick', 78, this.parentNode.querySelector('img').dataset.image)"><i class="fal fa-shopping-cart cart"></i></a>
+                <a href="#" onclick="addToCartWithPopup('NYX Barbie The Movie Matte Lip Cream', 699, this.parentNode.querySelector('img').dataset.image)"><i class="fal fa-shopping-cart cart"></i></a>
+              </div>
+              <div class="pro">
+                <img src="{% static 'images/products/l8.jpeg' %}" alt="" onclick="redirectToProduct('{% static 'images/products/l8.jpeg' %}')">
+                <div class="des">
+                  <span>Renee</span>
+                  <h5>RENEE Madness pH Stick 3gm | Black Lipstick Pink Pay Off
+                  </h5>
+                  <div class="star">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                  </div>
+                  <h4>Rs. 429</h4>
+                </div>
+                <a href="#" onclick="addToCartWithPopup('Renee Madness', 429, this.parentNode.querySelector('img').dataset.image)"><i class="fal fa-shopping-cart cart"></i></a>
               </div>
               
               <div class="pro">
-                <img src="{% static 'images/products/l2.avif' %}" alt="" data-image="{% static 'images/products/l2.avif' %}">
+                <img src="{% static 'images/products/l1.png' %}" alt="" onclick="redirectToProduct('{% static 'images/products/l1.png' %}')">
                 <div class="des">
-                  <span>mac lipstick</span>
-                  <h5>Love Me Lipstick</h5>
+                  <span>Maybelline</span>
+                  <h5>New York Superstay Vinyl Ink Liquid Lipstick 4.5 ml - Saucy                  </h5>
                   <div class="star">
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
@@ -179,16 +148,32 @@
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
                   </div>
-                  <h4>$78</h4>
+                  <h4>Rs. 662</h4>
                 </div>
-                <a href="#" onclick="addToCartWithPopup('mac lipstick', 78, this.parentNode.querySelector('img').dataset.image)"><i class="fal fa-shopping-cart cart"></i></a>
+                <a href="#" onclick="addToCartWithPopup('Maybelline Saucy', 662, this.parentNode.querySelector('img').dataset.image)"><i class="fal fa-shopping-cart cart"></i></a>
               </div>
               
               <div class="pro">
-                <img src="{% static 'images/products/l3.jpeg' %}" alt="" data-image="{% static 'images/products/l3.jpeg' %}">
+                <img src="{% static 'images/products/l2.avif' %}" alt="" onclick="redirectToProduct('{% static 'images/products/l2.avif' %}')">
+                <div class="des">
+                  <span>Inatur</span>
+                  <h5>Matt Liquid Lip Colour with Hyaluronic Acid & Collagen 2ml</h5>
+                  <div class="star">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                  </div>
+                  <h4>Rs. 236</h4>
+                </div>
+                <a href="#" onclick="addToCartWithPopup('Inatur Matt Liquid Lip Colour', 236, this.parentNode.querySelector('img').dataset.image)"><i class="fal fa-shopping-cart cart"></i></a>
+              </div>
+              <div class="pro">
+                <img src="{% static 'images/products/l7.jpeg' %}" alt="" onclick="redirectToProduct('{% static 'images/products/l7.jpeg' %}')">
                 <div class="des">
                   <span>mac lipstick</span>
-                  <h5>Cartoon Astronaut T-shirts</h5>
+                  <h5>Lipstick M.A.C Retro Matte </h5>
                   <div class="star">
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
@@ -198,7 +183,23 @@
                   </div>
                   <h4>$78</h4>
                 </div>
-                <a href="#" onclick="addToCartWithPopup('mac lipstick', 78, this.parentNode.querySelector('img').dataset.image)"><i class="fal fa-shopping-cart cart"></i></a>
+                <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
+              </div>         
+              <div class="pro">
+                <img src="{% static 'images/products/l3.jpeg' %}" alt="" onclick="redirectToProduct('{% static 'images/products/l3.jpeg' %}')">
+                <div class="des">
+                  <span>SWISS BEAUTY</span>
+                  <h5>3-In-1 Cream N Tint For Lips Cheeks & Eyelids 8g - Berrylicious</h5>
+                  <div class="star">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                  </div>
+                  <h4>Rs. 169</h4>
+                </div>
+                <a href="#" onclick="addToCartWithPopup('SWISS BEAUTY Berrylicious', 169, this.parentNode.querySelector('img').dataset.image)"><i class="fal fa-shopping-cart cart"></i></a>
               </div>
               </div>              
     </section>
@@ -313,6 +314,18 @@ function addToCartWithPopup(productName, price, imageSrc) {
 
   // Display the popup message
   alert('Item added to the cart');
+}
+function redirectToProduct(imageSrc, productName, price) {
+    const product = {
+        name: productName,
+        price: price
+    };
+
+    const productJson = JSON.stringify(product);
+    const encodedProduct = encodeURIComponent(productJson);
+    const url = `/sproduct/?image=${encodeURIComponent(imageSrc)}&product=${encodedProduct}`;
+
+    window.location.href = url;
 }
 
     </script>
