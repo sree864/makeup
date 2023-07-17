@@ -8,6 +8,8 @@ import numpy as np
 import dlib
 import base64
 
+import base64
+
 def try_on(request):
     if request.method == 'POST':
         # Load the pre-trained face detector and shape predictor
@@ -91,11 +93,16 @@ def try_on(request):
                 (x, y, w, h) = (face.left(), face.top(), face.width(), face.height())
                 cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
 
+            # Encode the processed frame as JPEG image in base64 format
+            retval, buffer = cv2.imencode('.jpg', frame)
+            processed_image_base64 = base64.b64encode(buffer).decode('utf-8')
+
             # Display the resulting frame
             cv2.imshow('Lipstick Try-On', frame)
+            cv2.waitKey()
 
             # Exit the loop if 'q' is pressed
-            if cv2.waitKey(1) & 0xFF == ord('q'):
+            if cv2.waitKey(0) & 0xFF == ord('q'):
                 break
 
         # Release the video capture object and close the windows
@@ -107,6 +114,7 @@ def try_on(request):
 
     else:
         return HttpResponseNotAllowed(['POST'])
+
 
 
 
@@ -218,18 +226,4 @@ def ok8(request):
 
 
 
-def sproduct(request):
-    image = request.GET.get('image')
-    product_encoded = request.GET.get('product')
 
-    # Decode the product JSON object
-    import json
-    product = json.loads(product_encoded)
-
-    product_name = product.get('name')
-    product_price = product.get('price')
-
-    # You can use the retrieved product name and price in your view logic
-
-    # For demonstration purposes, let's return a response with the retrieved data
-    return HttpResponse(f"Image: {image}<br>Product Name: {product_name}<br>Product Price: {product_price}")
