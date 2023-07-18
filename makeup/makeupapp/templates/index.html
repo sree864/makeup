@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="{% static 'style.css'%}"/>
+</head>
+<body>
+    <section id="header">
+      <!a href="#"><!img src="{% static 'images/logo/Screenshot 2023-05-31 at 9.56.03 PM.png' %}" class="logo" alt=""></a>
+      <div>
+        <ul id="navbar">
+            <li><a class="active" href="{% url 'index'%}">Home</a></li>
+            <li><a href="{% url 'shop'%}">Shop</a></li>
+            <li><a href="{% url 'about'%}">About</a></li>
+            <li><a href="{% url 'contact'%}">Contact</a></li>
+            <li><a href="{% url 'cart'%}"><i class="fa-solid fa-cart-shopping"></i></a></li>
+        </ul>
+    </div>
+        <div id="mobile">
+            <a href="cart.html"><i class="fa-solid fa-cart-shopping"></i></a><
+            <a<i id="bar" class="fas fa-outdent"></i>
+        </div>
+    </section>
+    <section id="hero">
+        <h4>Trade-in-offer</h4>
+        <h2>Super value deals</h2>
+        <h1>On all products</h1>
+        <p>Save more with coupons & upto 70% off!!!!</p>
+        <button onclick="window.location.href='{% url 'shop' %}'">Shop Now</button>
+      </section>
+    <section id="feature">
+        <div id="feature" class="section-p1">
+            <div class="fe-box">
+              <img src="{% static 'images/features/f1.png' %}" alt="">
+              <h6>Free Shipping</h6>
+            </div>
+            <div class="fe-box">
+              <img src="{% static 'images/features/f2.png' %}" alt="">
+              <h6>Online Order</h6>
+            </div>
+            <div class="fe-box">
+              <img src="{% static 'images/features/f3.png' %}" alt="">
+              <h6>Save Money</h6>
+            </div>
+            <div class="fe-box">
+              <img src="{% static 'images/features/f4.png' %}" alt="">
+              <h6>Promotions</h6>
+            </div>
+            <div class="fe-box">
+              <img src="{% static 'images/features/f5.png' %}" alt="">
+              <h6>Happy Sell</h6>
+            </div>
+            <div class="fe-box">
+              <img src="{% static 'images/features/f6.png' %}" alt="">
+              <h6>Support</h6>
+            </div>
+        </div>
+    </section>
+    <section id="product1" class="section-p1">
+        <h2>Featured Products</h2>
+        <p>Summer Collection New Modern Design</p>
+        <div class="pro-container">
+          <section id="product1" class="section-p1">
+            <div class="pro-container">
+              <div class="pro">
+                <img src="{% static 'images/products/l1.png' %}" alt="" onclick="redirectToProduct('{% static 'images/products/l1.png' %}', 'MAC Mehr', 800)">
+                <div class="des">
+                  <span>MAC</span>
+                  <h5>Mini Matte Lipstick 1.8g - Mehr</h5>
+                  <div class="star">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                  </div>
+                  <h4>Rs. 800</h4>
+                </div>
+                <a href="#" onclick="addToCartWithPopup('MAC Mehr', 800, this.parentNode.querySelector('img').dataset.image)"><i class="fal fa-shopping-cart cart"></i></a>
+              </div>
+              
+              <div class="pro">
+                <img src="{% static 'images/products/l2.avif' %}" alt="" onclick="redirectToProduct('{% static 'images/products/l2.avif' %}', 'Lakme Deep Wine', 345)">
+                <div class="des">
+                  <span>Lakme</span>
+                  <h5>9to5 Primer Matte Lipstick - Deep Wine</h5>
+                  <div class="star">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                  </div>
+                  <h4>Rs. 345</h4>
+                </div>
+                <a href="#" onclick="addToCartWithPopup('Lakme Deep Wine', 345, this.parentNode.querySelector('img').dataset.image)"><i class="fal fa-shopping-cart cart"></i></a>
+              </div>
+              
+              <div class="pro">
+                <img src="{% static 'images/products/l3.jpeg' %}" alt="" onclick="redirectToProduct('{% static 'images/products/l3.jpeg' %}', 'NYX Barbie The Movie Matte Lip Cream', 699)">
+                <div class="des">
+                  <span>NYX PROFESSIONAL MAKEUP
+                  </span>
+                  <h5>Barbie The Movie Matte Lip Cream</h5>
+                  <div class="star">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                  </div>
+                  <h4>Rs. 699</h4>
+                </div>
+                <a href="#" onclick="addToCartWithPopup('NYX Barbie The Movie Matte Lip Cream', 699, this.parentNode.querySelector('img').dataset.image)"><i class="fal fa-shopping-cart cart"></i></a>
+              </div>
+              <div class="pro">
+                <img src="{% static 'images/products/l8.jpeg' %}" alt="" onclick="redirectToProduct('{% static 'images/products/l8.jpeg' %}')">
+                <div class="des">
+                  <span>Renee</span>
+                  <h5>RENEE Madness pH Stick 3gm | Black Lipstick Pink Pay Off
+                  </h5>
+                  <div class="star">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                  </div>
+                  <h4>Rs. 429</h4>
+                </div>
+                <a href="#" onclick="addToCartWithPopup('Renee Madness', 429, this.parentNode.querySelector('img').dataset.image)"><i class="fal fa-shopping-cart cart"></i></a>
+              </div>
+              
+              <div class="pro">
+                <img src="{% static 'images/products/l1.png' %}" alt="" onclick="redirectToProduct('{% static 'images/products/l1.png' %}')">
+                <div class="des">
+                  <span>Maybelline</span>
+                  <h5>New York Superstay Vinyl Ink Liquid Lipstick 4.5 ml - Saucy                  </h5>
+                  <div class="star">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                  </div>
+                  <h4>Rs. 662</h4>
+                </div>
+                <a href="#" onclick="addToCartWithPopup('Maybelline Saucy', 662, this.parentNode.querySelector('img').dataset.image)"><i class="fal fa-shopping-cart cart"></i></a>
+              </div>
+              
+              <div class="pro">
+                <img src="{% static 'images/products/l2.avif' %}" alt="" onclick="redirectToProduct('{% static 'images/products/l2.avif' %}')">
+                <div class="des">
+                  <span>Inatur</span>
+                  <h5>Matt Liquid Lip Colour with Hyaluronic Acid & Collagen 2ml</h5>
+                  <div class="star">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                  </div>
+                  <h4>Rs. 236</h4>
+                </div>
+                <a href="#" onclick="addToCartWithPopup('Inatur Matt Liquid Lip Colour', 236, this.parentNode.querySelector('img').dataset.image)"><i class="fal fa-shopping-cart cart"></i></a>
+              </div>
+              <div class="pro">
+                <img src="{% static 'images/products/l7.jpeg' %}" alt="" onclick="redirectToProduct('{% static 'images/products/l7.jpeg' %}')">
+                <div class="des">
+                  <span>mac lipstick</span>
+                  <h5>Lipstick M.A.C Retro Matte </h5>
+                  <div class="star">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                  </div>
+                  <h4>$78</h4>
+                </div>
+                <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
+              </div>         
+              <div class="pro">
+                <img src="{% static 'images/products/l3.jpeg' %}" alt="" onclick="redirectToProduct('{% static 'images/products/l3.jpeg' %}')">
+                <div class="des">
+                  <span>SWISS BEAUTY</span>
+                  <h5>3-In-1 Cream N Tint For Lips Cheeks & Eyelids 8g - Berrylicious</h5>
+                  <div class="star">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                  </div>
+                  <h4>Rs. 169</h4>
+                </div>
+                <a href="#" onclick="addToCartWithPopup('SWISS BEAUTY Berrylicious', 169, this.parentNode.querySelector('img').dataset.image)"><i class="fal fa-shopping-cart cart"></i></a>
+              </div>
+              </div>              
+    </section>
+  </section>
+    <section id="sm-banner" class="section-p1">
+        <div class="banner-box">
+            <h4>crazy deals</h4>
+            <h2>buy 1 get 1 free</h2>
+            <span>The best classic dress is on sale</span>
+            <button class="white">Learn More</button>
+        </div>
+        <div class="banner-box banner-box2">
+            <h4>crazy deals</h4>
+            <h2>buy 1 get 1 free</h2>
+            <span>The best classic dress is on sale</span>
+            <button class="white">Learn More</button>
+        </div>
+    </section>
+    <section id="banner3">
+        <div class="banner-box">
+            <h2>Seasonal sale</h2>
+            <h3>aome other text</h3>
+        </div>
+        <div class="banner-box">
+            <h2>Seasonal sale</h2>
+            <h3>aome other text</h3>
+        </div>
+        <div class="banner-box">
+            <h2>Seasonal sale</h2>
+            <h3>aome other text</h3>
+        </div>
+    </section>
+    <section id="newsletter" class="section-p1 section-m1">
+        <div class="newstext">
+            <h4>Sign Up for Newsletters</h4>
+            <p>Get Email updates about our latest shop and <span>special offers.</span></p>
+        </div>
+        <div class="form">
+        <input type="text" placeholder="Your email address">
+        <button class="normal">Sign up</button>
+    </div>
+    </section>
+    <footer class="section-p1">
+        <div class="col">
+            <img class="logo" src="" alt="logo">
+            <h4>Contact</h4>
+            <p><strong>Address: </strong>562 Wellingto Road, Area 52, New York</p>
+            <p><strong>Phone: </strong>5+01 222 444/(+91) 71 71 7272</p>
+            <p><strong>Hours: </strong>10:000-18:00, Mon-Sat</p>
+            <div class="follow">
+                <h4>Follow us</h4>
+                <div class="icon">
+                    <i class="fab fa-facebook-f"></i>
+                    <i class="fab fa-twitter"></i>
+                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-pinterest-p"></i>
+                    <i class="fab fa-youtube"></i>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <h4>About</h4>
+            <a href="#">About us</a>
+            <a href="#">Delivery Information</a>
+            <a href="#">Privacy and Policy</a>
+            <a href="#">terms & Conditions</a>
+            <a href="#">Contact Us</a>
+        </div>
+        <div class="col">
+            <h4>Account</h4>
+            <a href="#">Sign In</a>
+            <a href="#">View Cart</a>
+            <a href="#">My wishlist</a>
+            <a href="#">Track My Order</a>
+            <a href="#">Help</a>
+        </div>
+        <div class="col install">
+        <h4>install App</h4>
+        <p>From App Store or Google Play</p>
+        <div class="row">
+          <img src="{% static 'images/pay/app.jpg' %}" alt="">
+          <img src="{% static  'images/pay/play.jpg' %}" alt="">
+        </div>
+        <p>Secured Payment Gateways</p>
+        <img class="pay" src="{% static 'images/pay/pay.png' %}" alt="">
+    </div>
+    <div class="copyright">
+       <p>© 2022 Sree</p> 
+    </div>
+    </footer>
+    <script>
+      function addToCart(productName, price, imageSrc) {
+        // Get the existing cart items from local storage or initialize an empty array
+        let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    
+        // Create a new item object
+        let newItem = {
+          productName: productName,
+          price: price,
+          imageSrc: imageSrc
+        };
+    
+        // Add the new item to the cart items array
+        cartItems.push(newItem);
+    
+        // Store the updated cart items in local storage
+        localStorage.setItem('cartItems', JSON.stringify(cartItems));
+      }
+      // Function to add an item to the cart and display a popup message
+function addToCartWithPopup(productName, price, imageSrc) {
+  addToCart(productName, price, imageSrc); // Call the original addToCart() function
+
+  // Display the popup message
+  alert('Item added to the cart');
+}
+function redirectToProduct(imageSrc, productName, price) {
+    const product = {
+        name: productName,
+        price: price
+    };
+
+    const productJson = JSON.stringify(product);
+    const encodedProduct = encodeURIComponent(productJson);
+    const url = `/sproduct/?image=${encodeURIComponent(imageSrc)}&product=${encodedProduct}`;
+
+    window.location.href = url;
+}
+
+    </script>
+            
+</body>
+</html>
