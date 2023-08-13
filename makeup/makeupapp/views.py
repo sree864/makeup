@@ -14,7 +14,9 @@ face_detector = dlib.get_frontal_face_detector()
 shape_predictor = dlib.shape_predictor('C:\\Users\\pvroo\\Downloads\\makeup-version3\\makeup\\makeupapp\\shape_predictor_68_face_landmarks.dat')
 lipstick_image = cv2.imread('C:\\Users\\pvroo\\Downloads\\makeup-version3\\makeup\\makeupapp\\l1.png')
 
-
+lipstick_mask = cv2.cvtColor(lipstick_image, cv2.COLOR_BGR2GRAY)
+_, lipstick_mask = cv2.threshold(lipstick_mask, 1, 255, cv2.THRESH_BINARY)
+lipstick_mask = cv2.bitwise_not(lipstick_mask)
 def try_on(request):
     if request.method == 'POST':
         # Initialize the video capture object
@@ -76,8 +78,7 @@ def try_on(request):
                     average_color = cv2.mean(lipstick_roi, mask=mask)[:3]
                     average_color = tuple(map(int, average_color))
                 else:
-                    # Use BGR(0, 0, 128) if no red pixels are found
-                    average_color = (0, 0, 128)
+                    average_color = dominant_red_color
 
                 # Apply the extracted average color to the lips region
                 cv2.fillPoly(frame, [lips_region], average_color)
