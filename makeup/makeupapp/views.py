@@ -14,12 +14,6 @@ face_detector = dlib.get_frontal_face_detector()
 shape_predictor = dlib.shape_predictor('C:\\Users\\pvroo\\Downloads\\makeup-version3\\makeup\\makeupapp\\shape_predictor_68_face_landmarks.dat')
 lipstick_image = cv2.imread('C:\\Users\\pvroo\\Downloads\\makeup-version3\\makeup\\makeupapp\\l1.png')
 
-# Load the lipstick image
-
-# Create a mask to remove the white background from the lipstick image
-lipstick_mask = cv2.cvtColor(lipstick_image, cv2.COLOR_BGR2GRAY)
-_, lipstick_mask = cv2.threshold(lipstick_mask, 1, 255, cv2.THRESH_BINARY)
-lipstick_mask = cv2.bitwise_not(lipstick_mask)
 
 def try_on(request):
     if request.method == 'POST':
