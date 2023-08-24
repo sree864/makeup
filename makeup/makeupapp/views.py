@@ -9,9 +9,6 @@ shape_predictor = dlib.shape_predictor('shape_predictor_68_face_landmarks.dat')
 
 # Load the lipstick image
 lipstick_image = cv2.imread('l1.png')
-lipstick_mask = cv2.cvtColor(lipstick_image, cv2.COLOR_BGR2GRAY)
-_, lipstick_mask = cv2.threshold(lipstick_mask, 1, 255, cv2.THRESH_BINARY)
-lipstick_mask = cv2.bitwise_not(lipstick_mask)
 
 def try_on(request):
     if request.method == 'POST':
@@ -41,7 +38,6 @@ def try_on(request):
                 lips_region = cv2.convexHull(landmarks[48:61])
                 (x, y, w, h) = cv2.boundingRect(lips_region)
 
-                lipstick_mask_resized = cv2.resize(lipstick_mask, (w, h))
 
                 # Find the cluster index that corresponds to a shade of red with low G and B values
                 red_cluster = None
